@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros</title>
+    <link rel="icon" type="image/png" href="Imagenes/logo1.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link type="text/css" href='{% static "css/Style.css" %}'rel="stylesheet"></link>
+
+</head>
+<body>
+
+<ul class="topnav">
+  <li><a href="Inicio.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+  <li><a class="active" href="Sobre_nosotros.html"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
+  <li><a href="Formulario.html"><i class="fas fa-address-book me-1"></i> Contacto</a></li>
+  <li class="right"><a href="#about" id="consultarClima">Inicio Sesión</a></li>
+  <li class="right"><a href="VistaCliente.html">Cliente</a></li>
+</ul>
+<br>
+
+<h1 style="text-align: center;">Sobre Nosotros</h1>
+  <!-- Agregar la imagen a lo ancho con texto superpuesto -->
+  <div class="imagen-ancho" style="position: relative; text-align: center; color: rgb(255, 255, 255);">
+    <img src="{%static 'imagenes/fondo.jpg '%}" alt="Nosotros" style="width: 100%;">
+    <div class="texto-superpuesto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(155, 130, 130, 0); padding: 20px;">
+        <h2><h5>La oficina de abogados "Lex" nació en 2010 como resultado de la visión compartida de 
+          tres abogados que se graduaron juntos de la misma universidad. Desde entonces, han estado 
+          brindando servicios legales de alta calidad a una amplia gama de clientes, tanto individuos 
+          como empresas, que buscan asesoramiento jurídico en diversas áreas. Su compromiso con la excelencia 
+          y la ética profesional ha cimentado su reputación como una firma confiable y respetada en la comunidad legal.</h5></h2>
+          <h5>En respuesta a los desafíos del entorno actual, "Lex" ha decidido implementar un plan 
+            de mejora que incluye la contratación de personal adicional, la optimización de los procesos internos
+             y la modernización de sus sistemas de comunicación y gestión de casos. Este enfoque proactivo refleja 
+             su compromiso continuo con la excelencia y su determinación de brindar un servicio excepcional a sus clientes en 
+             todo momento.</h5>
+             <h5>La oficina de abogados “Lex” es una sociedad fundada en el año 2010 por tres abogados que
+              egresaron de la misma universidad. Nuestro equipo está comprometido en brindar servicios legales de calidad,
+               atendiendo tanto a personas como a empresas que requieran asistencia legal en diversos ámbitos.</h5>
+         </div>
+    </div>
+  </div>
+  
+<!-- Pie de página -->
+<footer style="text-align: center; background-color: #273b7c; color: white; padding: 20px;">
+  <p>&copy; 2024 Lex Abogados - Todos los derechos reservados</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
