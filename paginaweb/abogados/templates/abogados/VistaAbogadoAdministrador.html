@@ -1,22 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Abogado Administrador</title>
-    <link rel="stylesheet" href="Style.css">
+    <link type="text/css" href='{% static "css/Style.css" %}'rel="stylesheet"></link>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <!-- Navegación Principal -->
-    <ul class="topnav">
-        <li><a href="Inicio.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
-        <li><a href="Sobre_nosotros.html"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
-        <li><a href="Formulario.html"><i class="fas fa-address-book me-1"></i> Contacto</a></li>
-        <li class="right"><a href="VistaCliente.html"><i class="fas fa-user me-1"></i> Cliente</a></li>
-        <li class="right active"><a href="VistaAbogadoAdministrador.html"><i class="fas fa-briefcase me-1"></i> Abogado Administrador</a></li>
+    <ul class="topnav"> 
+        <li><a href="{% url 'Inicio' %}"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li><a href="{% url 'Sobre_nosotros' %}"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
+        <li><a class="active" href="{% url 'VistaAbogadoAdministrador' %}"><i class="fas fa-gavel me-1"></i> Abogado Administrador</a></li>
     </ul>
 
 <!-- Navegación del Panel del Abogado Administrador -->
@@ -53,11 +52,11 @@
         </div>
     </div>
 
-        <!-- Reporte Financiero -->
+        <!-- Reporte  -->
         <div id="registro" class="content-section">
-            <h2>Reporte Financiero</h2>
+            <h2>Registrar abogado</h2>
             <div class="list-group">
-                <form id="formularioRegistro" method="post" action="{% url 'registro' %}" class="mx-auto" style="max-width: 600px;">
+                <form id="formularioRegistro" method="post" action="{% url 'Registro' %}" class="mx-auto" style="max-width: 600px;">
                     {% csrf_token %}
                     <div class="mb-4">
                         <label for="rut" class="form-label">RUT</label>
@@ -131,8 +130,9 @@
         </div>
     </div>
 </div>
-    <script src="Registro.js"></script>
-    <script src="Vistas.js"></script>
+
+    <script src='{%static "js/Registro.js"%}'></script>
+    <script src='{%static "js/Vistas.js"%}'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
