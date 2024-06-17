@@ -109,6 +109,58 @@ ul.topnav li a.active,
   padding-left: 200px;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.info-box {
+  background-image: url('Imagenes/fondo_poderjudicial.jpg'); /* Añade la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  border: 2px solid white;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  height: 95%; /* Ajusta el tamaño del cuadro para que coincida con el del carrusel */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-content {
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.info-content p {
+  margin-bottom: 20px;
+}
+
+.info-content .btn {
+  background-color: #333; /* Azul del tema */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+
 /* Botón de cerrar */
 .close {
   color: #aaa;
@@ -246,31 +298,6 @@ ul.topnav li a.active,
   background-color: #007bff;
   border: none;
 }
-/* Estilos CSS para centrar el texto h1 */
-.card1 h1 {
-  text-align: center;
-}
-
-.card1 {
-  position: relative; /* Necesario para usar top y right */
-}
-
-.card1 .card {
-  width: 300px; /* Cambia el ancho de la tarjeta a 300px */
-  
-  position: absolute;
-  right: 100px;
-  top: -500px;
-}
-
-
-.card1 .img1 {
-  text-align: center;
-}
-
-.card1 .card-content1 {
-  text-align: center;
-}
 
 /* Estilos del contenedor de tarjetas */
 .card-container {
@@ -279,6 +306,15 @@ ul.topnav li a.active,
   justify-content: center;
 }
 
+.card {
+  margin: 1px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  width: calc(25% - 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
 
 .card img {
   width: 100%;
@@ -301,15 +337,11 @@ ul.topnav li a.active,
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .card {
   margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
   padding: 15px;
-  width: calc(29% - 20px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  width: calc(33% - 20px);
   text-align: center;
 }
 
@@ -437,5 +469,23 @@ input[type="submit"]:hover {
   color: #000000;
   border-radius: 10px;
 }
+/* Estilos CSS para centrar el texto h1 */
+h1 {
+  text-align: center;
+}
 
-
+/* Estilos CSS REGISTRO */
+.text-danger {
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
+.error-message {
+    color: #dc3545;
+    font-weight: bold;
+    display: none;
+}
+.success-message {
+    color: #28a745;
+    font-weight: bold;
+    display: none;
+}

@@ -18,139 +18,54 @@
         <li class="right" class="active"><a href="VistaCliente.html"><i class="fas fa-book me-1"></i>Cliente</a></li>
     </ul>
 
-<!-- Navegación -->
+<!-- Navegación del Panel del Abogado Consultor -->
 <ul class="topnav1 nav nav-pills mb-3">
-    <li class="nav-item"><a class="nav-link active" href="#" data-section="perfil">Perfil</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-section="solicitud">Solicitud de Servicio</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-section="estado">Estado de la Causa</a></li>
+    <li class="nav-item"><a class="nav-link active" href="#" data-section="causas">Causas a Estudiar</a></li>
     <li class="nav-item"><a class="nav-link" href="#" data-section="contratos">Contratos y Documentos</a></li>
     <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
 </ul>
 
 <!-- Contenedor de contenido -->
 <div class="content-container">
-    <div id="perfil" class="content-section active">
-        <h2>Perfil</h2>
-        <form method="post" action="{% url 'perfil' %}">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Nombre de Usuario</label>
-                <input type="text" id="username" class="form-control" value="{{ user.username }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="first_name" class="form-label">Nombre</label>
-                <input type="text" id="first_name" class="form-control" value="{{ user.first_name }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="last_name" class="form-label">Apellido</label>
-                <input type="text" id="last_name" class="form-control" value="{{ user.last_name }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" name="email" class="form-control" value="{{ user.email }}">
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Número de Teléfono</label>
-                <input type="text" id="phone" class="form-control" value="{{ user.profile.phone }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Dirección</label>
-                <input type="text" id="address" name="address" class="form-control" value="{{ user.profile.address }}">
-            </div>
-            <div class="mb-3">
-                <label for="date_of_birth" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" id="date_of_birth" class="form-control" value="{{ user.profile.date_of_birth }}" readonly>
-            </div>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
+
+    <!-- Causas a Estudiar -->
+    <div id="causas" class="content-section active">
+        <h2>Causas a Estudiar</h2>
+        <div class="list-group">
+            {% for causa in causas %}
+                <a href="{% url 'detalle_causa' causa.id %}" class="list-group-item list-group-item-action">
+                    {{ causa.numero }} - {{ causa.estado }}
+                </a>
+            {% endfor %}
+        </div>
     </div>
 
-        <!-- Solicitud de Servicio -->
-        <div id="solicitud" class="content-section">
-            <h2>Solicitud de Servicio</h2>
-            <form id="solicitudServicioForm">
-                <div class="mb-3">
-                    <label for="tipoServicio" class="form-label">Tipo de Servicio</label>
-                    <select id="tipoServicio" class="form-select">
-                        <option selected>Seleccione un tipo de servicio</option>
-                        <option value="consulta">Consulta Jurídica</option>
-                        <option value="representacion">Representación Legal</option>
-                        <option value="documentacion">Preparación de Documentación</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción del Servicio</label>
-                    <textarea id="descripcion" class="form-control" rows="4" placeholder="Describa brevemente su solicitud"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="fechaPreferida" class="form-label">Fecha Preferida</label>
-                    <input type="date" id="fechaPreferida" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="archivoAdjunto" class="form-label">Adjuntar Documentos</label>
-                    <input type="file" id="archivoAdjunto" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-            </form>
+    <!-- Contratos y Documentos -->
+    <div id="contratos" class="content-section">
+        <h2>Contratos y Documentos</h2>
+        <div class="list-group">
+            {% for documento in documentos %}
+                <a href="{{ documento.archivo.url }}" class="list-group-item list-group-item-action" download>
+                    {{ documento.nombre }}
+                </a>
+            {% endfor %}
         </div>
+    </div>
 
-
-        <!-- Estado de la Causa -->
-        <div id="estado" class="content-section">
-            <h2>Estado de la Causa</h2>
-            <form id="estadoCausaForm">
-                <div class="mb-3">
-                    <label for="numeroCausa" class="form-label">Número de Causa</label>
-                    <input type="text" id="numeroCausa" class="form-control" value="{{ causa.numero }}" readonly>
+    <!-- Notificaciones y Comunicación -->
+    <div id="notificaciones" class="content-section">
+        <h2>Notificaciones y Comunicación</h2>
+        <div class="list-group">
+            {% for notificacion in notificaciones %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ notificacion.titulo }}</h5>
+                    <p class="mb-1">{{ notificacion.mensaje }}</p>
+                    <small>{{ notificacion.fecha }}</small>
                 </div>
-                <div class="mb-3">
-                    <label for="estadoActual" class="form-label">Estado Actual</label>
-                    <input type="text" id="estadoActual" class="form-control" value="{{ causa.estado_actual }}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="proximoPaso" class="form-label">Próximo Paso</label>
-                    <textarea id="proximoPaso" class="form-control" rows="3" readonly>{{ causa.proximo_paso }}</textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="fechaProximaAudiencia" class="form-label">Fecha de la Próxima Audiencia</label>
-                    <input type="date" id="fechaProximaAudiencia" class="form-control" value="{{ causa.fecha_proxima_audiencia }}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="notasAdicionales" class="form-label">Notas Adicionales</label>
-                    <textarea id="notasAdicionales" class="form-control" rows="3" readonly>{{ causa.notas_adicionales }}</textarea>
-                </div>
-            </form>
+            {% endfor %}
         </div>
-
-
-        <!-- Contratos y Documentos -->
-        <div id="contratos" class="content-section">
-            <h2>Contratos y Documentos</h2>
-            <div class="list-group">
-                {% for documento in documentos %}
-                    <a href="{{ documento.archivo.url }}" class="list-group-item list-group-item-action" download>
-                        {{ documento.nombre }}
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-
-
-       <!-- Notificaciones y Comunicación -->
-<div id="notificaciones" class="content-section">
-    <h2>Notificaciones y Comunicación</h2>
-    <div class="list-group">
-        {% for notificacion in notificaciones %}
-            <div class="list-group-item">
-                <h5 class="mb-1">{{ notificacion.titulo }}</h5>
-                <p class="mb-1">{{ notificacion.mensaje }}</p>
-                <small>{{ notificacion.fecha }}</small>
-            </div>
-        {% endfor %}
     </div>
 </div>
-
 
 <script src="Vistas.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
