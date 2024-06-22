@@ -28,3 +28,6 @@ def VistaCliente(request):
     context={}
     return render(request,'abogados/VistaCliente.html', context)
 
+def carrusel_view(request):
+    return render(request, 'abogados/carrusel.html')
+

@@ -9,4 +9,5 @@ path('TecnicoJuridico',views.TecnicoJuridico, name='TecnicoJuridico'),
 path('VistaAbogadoAdministrador',views.VistaAbogadoAdministrador, name='VistaAbogadoAdministrador'),
 path('VistaAbogadoConsultor',views.VistaAbogadoConsultor, name='VistaAbogadoConsultor'),
 path('VistaCliente',views.VistaCliente, name='VistaCliente'),
+path('carrusel/', views.carrusel_view, name='carrusel'),
 ]

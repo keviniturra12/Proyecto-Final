@@ -71,7 +71,7 @@ ul.topnav li a.active,
 }
 
 /* Contenido de la modal */
-.modal-content1,
+
 .modal-content {
   position: relative;
   background-color: #fefefe;
@@ -81,13 +81,29 @@ ul.topnav li a.active,
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   animation: animatetop 0.4s;
 }
+.modal-content1 {
+  position: relative;
+  background-color: #fefefe; /* fondo blanco */
+  margin: auto;
+  padding: 20px; /* relleno para el contenido */
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* sombra para una mejor apariencia */
+  animation: animatetop 0.4s; /* animación al aparecer */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 500px;
+  border-radius: 15px;
+  margin-top: 170px; /* ajusta este valor para mover el modal hacia abajo */
+}
 
 /* Estilo específico para modal-content1 */
 .modal-content1 {
   flex-direction: column;
   width: 60%;
   max-width: 500px;
-  border-radius: 5px;
+  align-items: 500px;
+  border-radius: 15px;
 }
 
 /* Animación de la modal */
@@ -306,15 +322,6 @@ ul.topnav li a.active,
   justify-content: center;
 }
 
-.card {
-  margin: 1px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  width: calc(25% - 20px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
 
 .card img {
   width: 100%;
@@ -341,7 +348,7 @@ ul.topnav li a.active,
 .card {
   margin: 10px;
   padding: 15px;
-  width: calc(33% - 20px);
+  width: calc(29% - 20px);
   text-align: center;
 }
 
@@ -489,3 +496,39 @@ h1 {
     font-weight: bold;
     display: none;
 }
+/* Estilos para el carrusel */
+#carouselExampleDark {
+  max-width: 800px; /* Ancho máximo del carrusel */
+  margin: 0 auto; /* Centra el carrusel horizontalmente */
+}
+
+.carousel-item img {
+  height: 400px; /* Altura deseada para las imágenes */
+  object-fit: cover; /* Ajusta las imágenes para que cubran el contenedor */
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para la leyenda */
+  color: white; /* Color del texto en la leyenda */
+  padding: 10px; /* Espaciado interno de la leyenda */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de los controles de navegación */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Ancho de los controles de navegación */
+}
+
+.carousel-indicators button {
+  background-color: rgba(255, 255, 255, 0.5); /* Color de fondo de los indicadores */
+}
+
+.carousel-indicators .active {
+  background-color: white; /* Color de fondo del indicador activo */
+}
+
+
