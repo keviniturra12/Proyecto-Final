@@ -26,26 +26,25 @@
   <h1 style="text-align: center;">Oficina De Abogados Lex</h1>
   <br>
 
-
+  
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             {% include 'abogados/carrusel.html' %}
         </div>
-        <div class="col-md-6">
-            <div class="card align-right2">
-                <div class="card-content2">
-                    <h1 style="text-align: center;">Si tienes dudas o consultas</h1>
+        <div class="col-md-5 d-flex align-items-center">
+            <div class="card text-center w-100">
+                <div class="card-body">
+                    <h1 class="text-center">haz clic aqui para mas informacíon </h1>
                 </div>
-                <div class="img1 text-right"> <!-- Añadido 'text-right' para alinear el contenido a la derecha -->
-                    <a href="https://www.pjud.cl/" class="Imagen">
-                        <img src="{% static 'Imagenes/boton.webp' %}" alt="Imagen al lado del carrusel" class="Imagen">
-                        <span class="btn"></span>
+                <div class="text-center my-3">
+                    <a href="https://www.pjud.cl/">
+                        <img src="{% static 'Imagenes/boton.webp' %}" alt="Imagen al lado del carrusel" class="img-fluid" style="max-width: 250px; border-radius: 10px;">
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
   <!-- Scripts de Bootstrap y jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -53,9 +52,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>
 </html>
-
-  
-  
 
   <div id="climaModal" class="modal" tabindex="-1">
     <div class="modal-dialog">
