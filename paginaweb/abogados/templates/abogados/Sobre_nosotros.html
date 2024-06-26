@@ -20,34 +20,55 @@
     <li class="right"><a href="#about" id="consultarClima">Inicio Sesión</a></li>
 </ul>
 <br>
+<style>
+    .card-custom {
+        background-color: #f8f9fa; /* Fondo claro para contraste */
+        border: 1px solid #dee2e6; /* Borde sutil */
+        padding: 20px; /* Espaciado interno */
+        margin: 20px auto; /* Espaciado externo y centrado */
+        width: 90%; /* Ancho ajustable */
+        max-width: 1200px; /* Ancho máximo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+    .card-title {
+        margin-bottom: 20px; /* Espaciado debajo del título */
+    }
+    .card-text {
+        text-align: justify; /* Justificar el texto */
+        line-height: 1.6; /* Altura de línea para mejor legibilidad */
+    }
+</style>
+</head>
+<body>
 
-<h1 style="text-align: center;">Sobre Nosotros</h1>
-  <!-- Agregar la imagen a lo ancho con texto superpuesto -->
-  <div class="imagen-ancho" style="position: relative; text-align: center; color: rgb(255, 255, 255);">
-    <img src="{%static 'imagenes/fondo.jpg '%}" alt="Nosotros" style="width: 100%;">
-    <div class="texto-superpuesto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(155, 130, 130, 0); padding: 20px;">
-        <h2><h5>La oficina de abogados "Lex" nació en 2010 como resultado de la visión compartida de 
-          tres abogados que se graduaron juntos de la misma universidad. Desde entonces, han estado 
-          brindando servicios legales de alta calidad a una amplia gama de clientes, tanto individuos 
-          como empresas, que buscan asesoramiento jurídico en diversas áreas. Su compromiso con la excelencia 
-          y la ética profesional ha cimentado su reputación como una firma confiable y respetada en la comunidad legal.</h5></h2>
-          <h5>En respuesta a los desafíos del entorno actual, "Lex" ha decidido implementar un plan 
-            de mejora que incluye la contratación de personal adicional, la optimización de los procesos internos
-             y la modernización de sus sistemas de comunicación y gestión de casos. Este enfoque proactivo refleja 
-             su compromiso continuo con la excelencia y su determinación de brindar un servicio excepcional a sus clientes en 
-             todo momento.</h5>
-             <h5>La oficina de abogados “Lex” es una sociedad fundada en el año 2010 por tres abogados que
-              egresaron de la misma universidad. Nuestro equipo está comprometido en brindar servicios legales de calidad,
-               atendiendo tanto a personas como a empresas que requieran asistencia legal en diversos ámbitos.</h5>
-         </div>
-    </div>
-  </div>
+<div class="card card-custom">
+<h2 class="card-title display-4">La oficina de abogados "Lex"</h2>
+<p class="card-text lead">La oficina de abogados "Lex" nació en 2010 como resultado de la visión compartida de 
+tres abogados que se graduaron juntos de la misma universidad. Desde entonces, han estado 
+brindando servicios legales de alta calidad a una amplia gama de clientes, tanto individuos 
+como empresas, que buscan asesoramiento jurídico en diversas áreas. Su compromiso con la excelencia 
+y la ética profesional ha cimentado su reputación como una firma confiable y respetada en la comunidad legal.</p>
+<p class="card-text lead">En respuesta a los desafíos del entorno actual, "Lex" ha decidido implementar un plan 
+de mejora que incluye la contratación de personal adicional, la optimización de los procesos internos
+y la modernización de sus sistemas de comunicación y gestión de casos. Este enfoque proactivo refleja 
+su compromiso continuo con la excelencia y su determinación de brindar un servicio excepcional a sus clientes en 
+todo momento.</p>
+<p class="card-text lead">La oficina de abogados “Lex” es una sociedad fundada en el año 2010 por tres abogados que
+egresaron de la misma universidad. Nuestro equipo está comprometido en brindar servicios legales de calidad,
+atendiendo tanto a personas como a empresas que requieran asistencia legal en diversos ámbitos.</p>
+</div>
 
-  <div id="climaModal" class="modal" tabindex="-1">
+<h3 class="card-title display-4 text-center">Visítanos en nuestra oficina</h3>
+
+
+
+
+<!-- Modal para iniciar sesión -->
+<div id="climaModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"></h5>
+                <h5 class="modal-title">Iniciar Sesión</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -64,11 +85,10 @@
                         <div id="errorContraseña" class="text-danger" style="display: none;"></div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary" style="background-color: #333">Iniciar Sesión</button>
-                        <a href="{% url 'Registro' %}" class="btn btn-primary" style="background-color: #333">Crear Usuario</a>                    
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        <a href="{% url 'Registro' %}" class="btn btn-secondary">Crear Usuario</a>
                     </div>
                 </form>
-                <p></p>
                 <div id="mensajeExito" class="alert alert-success" style="display: none;">¡Inicio de sesión exitoso!</div>
                 <div id="mensajeError" class="alert alert-danger" style="display: none;">Error al iniciar sesión. Por favor, corrija los campos resaltados.</div>
             </div>
@@ -80,8 +100,8 @@
 </div>
 
 <!-- Agregar un contenedor para el mapa -->
-<div id="map" style="height: 400px; width: 100%;"></div>
-  
+<div id="map" style="height: 500px; width: 80%; margin: 0 auto; border-radius: 15px;"></div>
+<br>  
 <!-- Pie de página -->
 <footer style="text-align: center; background-color: #273b7c; color: white; padding: 20px;">
   <p>&copy; 2024 Lex Abogados - Todos los derechos reservados</p>
@@ -89,9 +109,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{% static 'js/SoporteApi.js' %}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src='{%static "js/Modal.js"%}'></script>
-<script src="{% static 'js/SoporteApi.js' %}"></script>
+
 </body>
 </html>

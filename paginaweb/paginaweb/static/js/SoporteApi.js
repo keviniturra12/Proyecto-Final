@@ -2,50 +2,35 @@ function initMap() {
     var mapDiv = document.getElementById("map");
     var map, marker;
 
+    // Ubicación fija (por ejemplo, la oficina de abogados "Lex")
+    var fixedLocation = { lat: -34.397, lng: 150.644 };
+
     map = new google.maps.Map(mapDiv, {
-        center: {lat: -34.397, lng: 150.644},
+        center: fixedLocation,
         zoom: 13
     });
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function(position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
+    marker = new google.maps.Marker({
+        position: fixedLocation,
+        map: map,
+        title: "Oficina de abogados 'Lex'",
+        icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+        }
+    });
 
-                map.setCenter(pos);
-
-                marker = new google.maps.Marker({
-                    position: pos,
-                    map: map,
-                    title: "Ubicación encontrada",
-                    icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-                    }
-                });
-
-                var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ 'location': pos }, function(results, status) {
-                    if (status === 'OK') {
-                        if (results[0]) {
-                            ubicacionInput.value = results[0].formatted_address;
-                        } else {
-                            ubicacionInput.value = 'No se encontraron resultados';
-                        }
-                    } else {
-                        ubicacionInput.value = 'Error en geolocalización: ' + status;
-                    }
-                });
-            },
-            function() {
-                handleLocationError(true, map.getCenter());
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': fixedLocation }, function(results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('ubicacionInput').value = results[0].formatted_address;
+            } else {
+                document.getElementById('ubicacionInput').value = 'No se encontraron resultados';
             }
-        );
-    } else {
-        handleLocationError(false, map.getCenter());
-    }
+        } else {
+            document.getElementById('ubicacionInput').value = 'Error en geolocalización: ' + status;
+        }
+    });
 
     function handleLocationError(browserHasGeolocation, pos) {
         var errorMessage = browserHasGeolocation ? 
