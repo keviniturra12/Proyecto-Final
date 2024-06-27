@@ -1,6 +1,6 @@
 function initMap() {
     var mapDiv = document.getElementById("map");
-    var map, marker;
+    var map;
 
     // Ubicación fija (por ejemplo, la oficina de abogados "Lex")
     var fixedLocation = { lat: -34.397, lng: 150.644 };
@@ -10,9 +10,9 @@ function initMap() {
         zoom: 13
     });
 
-    marker = new google.maps.Marker({
-        position: fixedLocation,
+    const marker = new google.maps.marker.AdvancedMarkerElement({
         map: map,
+        position: fixedLocation,
         title: "Oficina de abogados 'Lex'",
         icon: {
             url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
@@ -39,10 +39,3 @@ function initMap() {
         alert(errorMessage);
     }
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    var script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCWZRDRYSCz3oDOOBBpywKrmO962VNIJqA&callback=initMap&libraries=&v=weekly`;
-    script.async = true;
-    document.head.appendChild(script);
-});
