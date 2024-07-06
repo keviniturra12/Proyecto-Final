@@ -1,0 +1,10 @@
+{% extends "Listas.html" %}
+
+{% block content %}
+  <h2>Lista de Abogados</h2>
+  <ul>
+    {% for abogado in abogados %}
+      <li>{{ abogado.first_name }} {{ abogado.last_name }} - {{ abogado.email }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

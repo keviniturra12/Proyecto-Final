@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Solicitud de Servicio</title>
+</head>
+<body>
+    <h1>Crear Solicitud de Servicio</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Solicitud</button>
+    </form>
+</body>
+</html>

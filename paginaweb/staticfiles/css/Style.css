@@ -1,0 +1,500 @@
+/* Estilos generales del cuerpo */
+body {
+  background-image: url(Imagenes/fondo.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top left;
+}
+
+
+/* Barra de navegación superior */
+ul.topnav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #193468;
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
+ul.topnav li a,
+.btn-custom {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #193468;
+}
+
+/* Efectos hover para enlaces de navegación y botones */
+ul.topnav li a:hover:not(.active),
+.btn-custom:hover {
+  background-color: #122444;
+}
+
+/* Estado activo para enlaces de navegación y botones */
+ul.topnav li a.active,
+.btn-custom.active {
+  background-color: #969696;
+}
+
+/* Ajustes responsivos para la barra de navegación superior */
+@media screen and (max-width: 600px) {
+  ul.topnav li,
+  ul.topnav li.right {
+    float: none;
+  }
+}
+
+/* Estilos de la modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centrar la modal vertical y horizontalmente */
+}
+
+/* Contenido de la modal */
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  animation: animatetop 0.4s;
+}
+.modal-content1 {
+  position: relative;
+  background-color: #fefefe; /* fondo blanco */
+  margin: auto;
+  padding: 20px; /* relleno para el contenido */
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* sombra para una mejor apariencia */
+  animation: animatetop 0.4s; /* animación al aparecer */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 500px;
+  border-radius: 15px;
+  margin-top: 170px; /* ajusta este valor para mover el modal hacia abajo */
+}
+
+/* Estilo específico para modal-content1 */
+.modal-content1 {
+  flex-direction: column;
+  width: 60%;
+  max-width: 500px;
+  align-items: 500px;
+  border-radius: 15px;
+}
+
+/* Animación de la modal */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* Contenedor flex para alineación */
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 200px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.info-box {
+  background-image: url('Imagenes/fondo_poderjudicial.jpg'); /* Añade la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  border: 2px solid white;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  height: 95%; /* Ajusta el tamaño del cuadro para que coincida con el del carrusel */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-content {
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.info-content p {
+  margin-bottom: 20px;
+}
+
+.info-content .btn {
+  background-color: #333; /* Azul del tema */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+
+/* Botón de cerrar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+/* Estilos responsivos de imagen */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 1000px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border: 2px solid #969696;
+}
+
+.img-fluid:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+}
+
+/* Contenedor del slider y caja */
+.slider-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.slider-box {
+  width: 90%;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+/* Estilos de la caja del slider */
+.slider-box ul {
+  display: flex;
+  padding: 0;
+  width: 400%;
+  animation: slide 40s linear infinite;
+  margin: 0;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+}
+
+.slider-box li {
+  width: 25%;
+  list-style: none;
+}
+
+.slider-box img {
+  width: 100%;
+  height: auto;
+}
+
+/* Estilos generales de imagen */
+.img {
+  float: right;
+}
+
+/* Estilos de la barra de navegación secundaria */
+.topnav1 {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.topnav1 .nav-item {
+  margin: 0 10px;
+}
+
+.topnav1 .nav-link {
+  font-size: 1.1em;
+  color: #495057;
+}
+
+.topnav1 .nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Estilos del contenedor de contenido */
+.content-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de la sección de contenido */
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* Encabezados de la sección de contenido */
+.content-section h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.content-section .form-label {
+  font-weight: bold;
+}
+
+.content-section .form-control {
+  border-radius: 5px;
+}
+
+/* Estilos del botón primario */
+.content-section .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+/* Estilos del contenedor de tarjetas */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.card img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s;
+}
+
+.card:hover img {
+  filter: brightness(1.2);
+}
+
+.card-content {
+  padding: 0;
+  text-align: center;
+}
+
+/* Estilos del contenedor */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 10px;
+  padding: 15px;
+  width: calc(29% - 20px);
+  text-align: center;
+}
+
+/* Estilos del contenedor de burbujas */
+.bubble-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: auto;
+  border-radius: 70%;
+}
+
+/* Estilos de las burbujas */
+.bubble {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bubble img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Estilos generales de enlaces */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Estilos del encabezado */
+h1 {
+  text-align: left;
+}
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .formulario {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+/* Estilos del botón de envío */
+input[type="submit"] {
+  background-color: #193468;
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #193468;
+}
+
+/* Estilos de mensajes */
+.mensaje-exito,
+.mensaje-error {
+  display: none;
+}
+
+.mensaje-exito {
+  color: green;
+}
+
+.mensaje-error {
+  color: red;
+}
+
+/* Estilos de botones con imágenes */
+.btn-img {
+  display: block;
+  text-align: right;
+}
+
+/* Estilos del título de la sección */
+.sec-title2 .title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #0a0a0a;
+  max-width: 490px;
+  margin: 0 auto;
+}
+
+/* Estilos de imagen de ancho completo */
+.imagen-ancho {
+  position: relative;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.imagen-ancho img {
+  width: 100%;
+  height: auto;
+}
+
+/* Overlapping text styles */
+.texto-superpuesto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(101, 65, 65, 0);
+  padding: 20px;
+  color: #000000;
+  border-radius: 10px;
+}
+/* Estilos CSS para centrar el texto h1 */
+h1 {
+  text-align: center;
+}
+
+/* Estilos CSS REGISTRO */
+.text-danger {
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
+.error-message {
+    color: #dc3545;
+    font-weight: bold;
+    display: none;
+}
+.success-message {
+    color: #28a745;
+    font-weight: bold;
+    display: none;
+}
+
+

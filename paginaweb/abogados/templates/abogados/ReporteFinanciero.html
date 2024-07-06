@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Financiero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .report-container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .title {
+            text-align: center;
+            color: #007bff;
+        }
+        .info-line {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .section-title {
+            margin-top: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            color: #007bff;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h1 class="title">Reporte Financiero</h1>
+        <div class="info-line">
+            <h3>Año: {{ year }}</h3>
+        </div>
+        <div class="info-line">
+            <h4>Total de Ingresos: {{ total_ingresos }}</h4>
+        </div>
+
+        <div class="section-title">
+            <h5>Ingresos por Mes</h5>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mes in pagos_por_mes %}
+                    <tr>
+                        <td>{{ mes.month_name }}</td>
+                        <td>{{ mes.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-title">
+            <h5>Ingresos por Tipo de Pago</h5>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Pago</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tipo in pagos_por_tipo %}
+                    <tr>
+                        <td>{{ tipo.tipo_pago }}</td>
+                        <td>{{ tipo.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

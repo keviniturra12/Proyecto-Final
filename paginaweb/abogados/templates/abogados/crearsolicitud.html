@@ -1,0 +1,14 @@
+
+
+{% block title %}Crear Solicitud de Servicio{% endblock %}
+
+{% block content %}
+    <div id="solicitud" class="content-section">
+        <h2>Crear Solicitud de Servicio</h2>
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+        </form>
+    </div>
+{% endblock %}

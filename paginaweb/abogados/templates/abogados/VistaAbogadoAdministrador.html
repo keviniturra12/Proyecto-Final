@@ -5,68 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Abogado Administrador</title>
-    <link type="text/css" href='{% static "css/Style.css" %}'rel="stylesheet"></link>
+    <link type="text/css" href='{% static "css/Style.css" %}' rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navegación Principal -->
-    <ul class="topnav"> 
-        <li><a href="{% url 'Inicio' %}"><i class="fas fa-home me-1"></i> Inicio</a></li>
-        <li><a href="{% url 'Sobre_nosotros' %}"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
-        <li><a class="active" href="{% url 'VistaAbogadoAdministrador' %}"><i class="fas fa-gavel me-1"></i> Abogado Administrador</a></li>
+    {% include 'navegador.html' %}
+
+    <!-- Navegación del Panel del Abogado Administrador -->
+    <ul class="topnav1 nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link active" href="#" data-section="pendientes">Causas Pendientes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="aprobadas">Causas Aprobadas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="completadas">Causas Completadas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="finanzas">Reporte Financiero</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="registro">Registrar Abogado</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
     </ul>
 
-<!-- Navegación del Panel del Abogado Administrador -->
-<ul class="topnav1 nav nav-pills mb-3">
-    <li class="nav-item"><a class="nav-link active" href="#" data-section="causas">Todas las Causas</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-section="finanzas">Reporte Financiero</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-section="registro">Registrar abogado</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
-</ul>
+    <!-- Contenedor de contenido -->
+    <div class="content-container">
 
-<!-- Contenedor de contenido -->
-<div class="content-container">
-    <!-- Todas las Causas -->
-    <div id="causas" class="content-section active">
-        <h2>Todas las Causas</h2>
-        <div class="list-group">
-            {% for causa in todas_las_causas %}
-                <a href="{% url 'detalle_causa' causa.id %}" class="list-group-item list-group-item-action">
-                    {{ causa.numero }} - {{ causa.estado }} - {{ causa.abogado }}
-                </a>
-            {% endfor %}
+        <!-- Causas Pendientes -->
+        <div id="pendientes" class="content-section active">
+            <h2>Causas Pendientes</h2>
+            <ul>
+                {% for solicitud in causas_pendientes %}
+                    <li>
+                        <strong>Tipo de Servicio:</strong> {{ solicitud.tipo_servicio }}<br>
+                        <strong>Título:</strong> {{ solicitud.titulo }}<br>
+                        <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+                        {% if solicitud.archivo_adjunto %}
+                            <strong>Archivo Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}">{{ solicitud.archivo_adjunto.name }}</a><br>
+                        {% endif %}
+                        <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+                        <strong>Estado:</strong> {{ solicitud.estado }}<br>
+                        <strong>Abogado Asignado:</strong> {{ solicitud.abogado }}<br>
+                    </li>
+                    <br>
+                {% empty %}
+                    <li>No hay solicitudes aún.</li>
+                {% endfor %}
+            </ul>
         </div>
-    </div>
+
+        <!-- Causas Aprobadas -->
+        <div id="aprobadas" class="content-section">
+            <h2>Causas Aprobadas</h2>
+            <ul>
+                {% for solicitud in causas_aprobadas %}
+                    <li>
+                        <strong>Tipo de Servicio:</strong> {{ solicitud.tipo_servicio }}<br>
+                        <strong>Título:</strong> {{ solicitud.titulo }}<br>
+                        <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+                        {% if solicitud.archivo_adjunto %}
+                            <strong>Archivo Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}">{{ solicitud.archivo_adjunto.name }}</a><br>
+                        {% endif %}
+                        <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+                        <strong>Estado:</strong> {{ solicitud.estado }}<br>
+                        <strong>Abogado Asignado:</strong> {{ solicitud.abogado }}<br>
+                    </li>
+                    <br>
+                {% empty %}
+                    <li>No hay solicitudes aún.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Causas Completadas -->
+        <div id="completadas" class="content-section">
+            <h2>Causas Completadas</h2>
+            <ul>
+                {% for solicitud in causas_completadas %}
+                    <li>
+                        <strong>Tipo de Servicio:</strong> {{ solicitud.tipo_servicio }}<br>
+                        <strong>Título:</strong> {{ solicitud.titulo }}<br>
+                        <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+                        {% if solicitud.archivo_adjunto %}
+                            <strong>Archivo Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}">{{ solicitud.archivo_adjunto.name }}</a><br>
+                        {% endif %}
+                        <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+                        <strong>Estado:</strong> {{ solicitud.estado }}<br>
+                        <strong>Abogado Asignado:</strong> {{ solicitud.abogado }}<br>
+                    </li>
+                    <br>
+                {% empty %}
+                    <li>No hay solicitudes aún.</li>
+                {% endfor %}
+            </ul>
+        </div>
 
     <!-- Reporte Financiero -->
     <div id="finanzas" class="content-section">
         <h2>Reporte Financiero</h2>
-        <div class="list-group">
-            {% for reporte in reportes_financieros %}
-                <a href="{{ reporte.archivo.url }}" class="list-group-item list-group-item-action" download>
-                    {{ reporte.titulo }} - {{ reporte.fecha }}
-                </a>
-            {% endfor %}
-        </div>
+        <form method="GET" action="{% url 'GenerarReporteFinanciero' %}">
+            <div class="mb-3">
+                <label for="year" class="form-label">Año</label>
+                <select id="year" name="year" class="form-select" required>
+                    <option selected disabled>Seleccione un año</option>
+                    {% for year in years %}
+                        <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Generar Reporte</button>
+        </form>
     </div>
 
-        <!-- Reporte  -->
+        <!-- Registrar Abogado -->
         <div id="registro" class="content-section">
-            <h2>Registrar abogado</h2>
+            <h2>Registrar Abogado</h2>
             <div class="list-group">
-                <form id="formularioRegistro" method="post" action="{% url 'Registro' %}" class="mx-auto" style="max-width: 600px;">
+                <form id="formularioRegistro" method="post" action="{% url 'register_abogado' %}" class="mx-auto" style="max-width: 600px;">
                     {% csrf_token %}
                     <div class="mb-4">
                         <label for="rut" class="form-label">RUT</label>
                         <input type="text" id="rut" name="rut" class="form-control" required>
                         <div id="errorRut" class="error-message">Error en RUT</div>
-                    </div>
-                    <div class="mb-4">
-                        <label for="username" class="form-label">Nombre de Usuario</label>
-                        <input type="text" id="username" name="username" class="form-control" required>
-                        <div id="errorUsername" class="error-message">Error en Nombre de Usuario</div>
                     </div>
                     <div class="mb-4">
                         <label for="first_name" class="form-label">Nombre Abogado</label>
@@ -110,29 +165,28 @@
                     </div>
                     <div id="mensajeError" class="error-message">Por favor, corrija los errores antes de continuar.</div>
                     <div id="mensajeExito" class="success-message">Formulario enviado con éxito.</div>
-                    <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                    <button type="submit" class="btn btn-primary w-100">Registrar Abogado</button>
                 </form>
             </div>
         </div>
-    
 
-    <!-- Notificaciones y Comunicación -->
-    <div id="notificaciones" class="content-section">
-        <h2>Notificaciones y Comunicación</h2>
-        <div class="list-group">
-            {% for notificacion in notificaciones %}
-                <div class="list-group-item">
-                    <h5 class="mb-1">{{ notificacion.titulo }}</h5>
-                    <p class="mb-1">{{ notificacion.mensaje }}</p>
-                    <small>{{ notificacion.fecha }}</small>
-                </div>
-            {% endfor %}
+        <!-- Notificaciones y Comunicación -->
+        <div id="notificaciones" class="content-section">
+            <h2>Notificaciones y Comunicación</h2>
+            <div class="list-group">
+                {% for notificacion in notificaciones %}
+                    <div class="list-group-item">
+                        <h5 class="mb-1">{{ notificacion.titulo }}</h5>
+                        <p class="mb-1">{{ notificacion.mensaje }}</p>
+                        <small>{{ notificacion.fecha }}</small>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</div>
 
-    <script src='{%static "js/Registro.js"%}'></script>
-    <script src='{%static "js/Vistas.js"%}'></script>
+    </div>
+
+    <script src='{% static "js/Vistas.js" %}'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

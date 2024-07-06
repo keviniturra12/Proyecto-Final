@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Solicitudes de Servicio</title>
+</head>
+<body>
+    <h1>Lista de Solicitudes de Servicio999</h1>
+    <ul>
+        {% for solicitud in solicitudes %}
+            <li>
+                <strong>Tipo de Servicio:</strong> {{ solicitud.tipo_servicio }}<br>
+                <strong>Título:</strong> {{ solicitud.titulo }}<br>
+                <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+                {% if solicitud.archivo_adjunto %}
+                    <strong>Archivo Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}">{{ solicitud.archivo_adjunto.name }}</a><br>
+                {% endif %}
+                <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+                <strong>Estado:</strong> {{ solicitud.estado }}<br>
+            </li>
+            <br>
+        {% empty %}
+            <li>No hay solicitudes aún.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

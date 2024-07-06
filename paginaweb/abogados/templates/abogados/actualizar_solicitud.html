@@ -1,0 +1,29 @@
+
+{% block content %}
+<h1>Actualizar Solicitud22</h1>
+
+<ul>
+    {% for solicitud in solicitudes %}
+        <li>
+            <strong>Tipo de Servicio:</strong> {{ solicitud.tipo_servicio }}<br>
+            <strong>Título:</strong> {{ solicitud.titulo }}<br>
+            <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+            {% if solicitud.archivo_adjunto %}
+                <strong>Archivo Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}">{{ solicitud.archivo_adjunto.name }}</a><br>
+            {% endif %}
+            <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+            <strong>Estado:</strong> {{ solicitud.estado }}<br>
+            <strong>Abogado Asignado:</strong> {{ solicitud.abogado }}<br>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="hidden" name="solicitud_id" value="{{ solicitud.id }}">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </li>
+        <br>
+    {% empty %}
+        <li>No hay solicitudes aún.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #D5F2F2;
+        }
+        h1 {
+            font-size: 3em;
+            color: #333;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #666;
+            text-align: center;
+        }
+        a {
+            color: blue;
+            text-decoration:underline;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-to-home {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+        .back-to-home p,
+        .back-to-home a {
+            margin: 0 5px;
+        }
+    </style>
+    
+
+    <h1>404  Página no encontrada</h1>
+    <p>Página que estas buscando no esta disponible........</p>
+    <img src="{% static 'imagenes/404.gif' %}" alt="Página no encontrada">
+    <br>
+    <a href="{% url 'Inicio' %}"> ->Preciona Aqui<-  </a><p>Para volver a la pagina principal</p>
+    
+</body>
+</html>

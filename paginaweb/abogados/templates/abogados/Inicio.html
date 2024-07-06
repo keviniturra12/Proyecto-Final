@@ -12,161 +12,125 @@
 </head>
 <body>
 
-    <ul class="topnav"> 
-      <li><a class="active" href="{% url 'Inicio' %}"><i class="fas fa-home me-1"></i> Inicio</a></li>
-      <li><a href="{% url 'Sobre_nosotros' %}"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
-      <li class="right"><a href="#about" id="consultarClima">Inicio Sesión</a></li>
+  {% include 'navegador.html' %}
 
-      <li><a class="active" href="{% url 'VistaCliente' %}"><i class="fas fa-gavel me-1"></i> Cliente</a></li>
-      <li><a class="active" href="{% url 'VistaAbogadoConsultor' %}"><i class="fas fa-gavel me-1"></i> Abogado</a></li>
-      <li><a class="active" href="{% url 'TecnicoJuridico' %}"><i class="fas fa-gavel me-1"></i> Tecnico Juridico</a></li>
-      <li><a class="active" href="{% url 'VistaAbogadoAdministrador' %}"><i class="fas fa-gavel me-1"></i> Abogado Administrador</a></li>
-  </ul>
   <br>
   <h1 style="text-align: center;">Oficina De Abogados Lex</h1>
   <br>
   <div class="row">
-    <div class="col-md-6 slider-container">
-        <div class="slider-box">
-            <ul>
-                <li>
-                    <img src="{% static 'imagenes/abogados2.jpg' %}" alt="Imagen de Perfil">
-                </li>
-                <li>
-                    <img src="Imagenes/abogados2.jpg" alt="Imagen de Perfil">
-                </li>
-                <li>
-                    <img src="Imagenes/abogados3.jpg" alt="Imagen de Perfil">
-                </li>
-                <li>
-                    <img src="Imagenes/abogados4.jpg" alt="Imagen de Perfil">
-                </li>
-            </ul>
-        </div>
+    <div class="col-md-7">
+        {% include 'abogados/carrusel.html' %}
     </div>
-    <div class="card1">
-      <div class="card align-right1">
-          <div class="card-content1">
-              <h1 style="text-align: center;">Si tienes dudas o consultas</h1>
-          </div>
-          <div class="img1">
-              <a href="https://www.pjud.cl/" class="Imagen">
-                  <img src="Imagenes/boton.webp" alt="Imagen al lado del carrusel" class="Imagen">
-                  <span class="btn"></span>
-              </a>
-          </div>
-      </div>
-  </div>
-  
-  
-  
-
-  <div id="climaModal" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="col-md-5 d-flex align-items-center">
+        <div class="card text-center w-100">
+            <div class="card-body">
+                <h1 class="text-center">Haz clic aqui para mas informacíon </h1>
             </div>
-            <div class="modal-body">
-                <form id="loginForm">
-                    <div class="text-center mb-3">
-                        <img src="Imagenes/logo1.png" alt="Imagen de usuario" class="img-fluid">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" id="username" class="form-control" placeholder="Usuario">
-                        <div id="errorUsuario" class="text-danger" style="display: none;"></div>
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" id="password" class="form-control" placeholder="Contraseña">
-                        <div id="errorContraseña" class="text-danger" style="display: none;"></div>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" style="background-color: #333">Iniciar Sesión</button>
-                        <a href="{% url 'Registro' %}" class="btn btn-primary" style="background-color: #333">Crear Usuario</a>
-                    </div>
-                </form>
-                <p></p>
-                <div id="mensajeExito" class="alert alert-success" style="display: none;">¡Inicio de sesión exitoso!</div>
-                <div id="mensajeError" class="alert alert-danger" style="display: none;">Error al iniciar sesión. Por favor, corrija los campos resaltados.</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <div class="text-center my-3">
+                <a href="https://www.pjud.cl/">
+                    <img src="{% static 'Imagenes/boton.webp' %}" alt="Imagen al lado del carrusel" class="img-fluid" style="max-width: 250px; border-radius: 10px;">
+                </a>
             </div>
         </div>
     </div>
+</div>
+</div>
+  
+  
+  
+
+<div id="climaModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Iniciar Sesión</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="loginForm" method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+                  <div class="text-center mb-3">
+                      <img src="{% static 'Imagenes/logo1.png' %}" alt="Imagen de usuario" class="img-fluid">
+                  </div>
+                  <div class="mb-3">
+                      <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required>
+                  </div>
+                  <div class="mb-3">
+                      <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+                  </div>
+                  <div class="text-center">
+                      <button type="submit" class="btn btn-primary" style="background-color: #333">Iniciar Sesión</button>
+                      <a href="{% url 'Registro' %}" class="btn btn-primary" style="background-color: #333">Crear Usuario</a>
+                  </div>
+              </form>
+              {% if messages %}
+                  {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                  {% endfor %}
+              {% endif %}
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
   </div>
+</div>
 <br>
 <br>
 
-<script>
-    function crearUsuario() {
-        // Aquí puedes agregar la lógica para crear un nuevo usuario
-        // Por ejemplo, puedes obtener los valores de usuario y contraseña
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+<!-- BURBUJAS SERVICIO -->
+<h1 style="text-align: center;">Nuestros Servicios</h1>
 
-        // Luego, puedes realizar una solicitud al servidor para crear el usuario
-        // Por ejemplo, con una solicitud AJAX
-
-        // Una vez que se haya creado el usuario, puedes mostrar un mensaje de éxito o hacer otras acciones necesarias
-        alert("Usuario creado exitosamente");
-    }
-</script>
-
-  <!-- BURBUJAS SERVICIO -->
-  <h1 style="text-align: center;">Nuestros Servicios</h1>
-
-  <div class="card-container">
-    <div class="card" onclick="openModal('Abogado de Familia', 'Brindamos asesoramiento y representación legal en casos relacionados con el derecho de familia,   tales como divorcios, custodia de hijos, pensión alimenticia, adopciones, y otros asuntos familiares.')">
-      <img src="Imagenes/servicio1.jpeg" alt="Servicio 1">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: rgb(0, 0, 0);"><h4>Abogado de Familia</h4></a></p>
-      </div>
+<div class="card-container">
+  <div class="card" onclick="openModal('Abogado de Familia', 'Brindamos asesoramiento y representación legal en casos relacionados con el derecho de familia, tales como divorcios, donde protegemos tus derechos durante el proceso; custodia de hijos, asegurando acuerdos que reflejen el mejor interés del niño; pensión alimenticia, gestionando su obtención y cumplimiento; adopciones, guiándote a través del proceso legal para una transición fluida. los valores fluctúan entre $700.000 y $800.000-')">
+    <img src="{% static 'Imagenes/servicio1.jpeg' %}" alt="Servicio 1">
+    <div class="card-content">
       <br>
-    </div>  
-    <div class="card" onclick="openModal('Abogado Laboral', 'Ofrecemos asesoramiento legal en asuntos laborales, incluyendo despidos injustificados, conflictos laborales, negociaciones colectivas, reclamos de indemnizaciones laborales, entre otros.')">
-      <img src="Imagenes/servicio2.jpeg" alt="Servicio 2">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Laboral</h4></a></p>
-      </div>
-      <br>
+      <p> <a href="#" style="text-decoration:none; color: rgb(0, 0, 0);"><h4>Abogado de Familia</h4></a></p>
     </div>
-    <div class="card" onclick="openModal('Abogado Penalista', 'Proporcionamos defensa legal en casos penales, tanto en delitos menores como graves, incluyendo asistencia en juicios, recursos de apelación, defensa en procedimientos policiales, y más.')">
-      <img src="Imagenes/servicio3.jpeg" alt="Servicio 3">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Penalista</h4></a></p>
-      </div>
+    <br>
+  </div>  
+  <div class="card" onclick="openModal('Abogado Laboral', 'Ofrecemos asesoramiento legal en asuntos laborales, incluyendo despidos injustificados, donde defendemos tus derechos y buscamos soluciones justas; conflictos laborales, ayudando a resolver disputas entre empleados y empleadores; negociaciones colectivas, apoyando en la creación y negociación de convenios colectivos. los valores fluctúan entre $400.000 y $600.000-')">
+    <img src="{% static 'Imagenes/servicio2.jpeg' %}" alt="Servicio 2">
+    <div class="card-content">
       <br>
+      <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Laboral</h4></a></p>
     </div>
-    <div class="card" onclick="openModal('Abogado Civil', 'Nos especializamos en litigios civiles, tales como disputas de propiedad, contratos, herencias, responsabilidad civil, entre otros aspectos del derecho civil.')">
-      <img src="Imagenes/servicio4.jpeg" alt="Servicio 4">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Civil</h4></a></p>
-      </div>
-      <br>
-    </div>
-    <div class="card" onclick="openModal('Abogado Inmobiliario', 'Ofrecemos asesoramiento legal en casos de abandono inmobiliario, ayudando a propietarios a resolver situaciones relacionadas con el abandono de propiedades por inquilinos u ocupantes ilegales.')">
-      <img src="Imagenes/servicio5.jpeg" alt="Servicio 5">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Inmobiliario</h4></a></p>
-      </div>
-      <br>
-    </div>
-    <div class="card" onclick="openModal('Asesoría Legal','Además de las áreas específicas mencionadas, proporcionamos asesoramiento legal general en una variedad de otros asuntos legales, adaptándonos a las necesidades individuales de nuestros clientes.')">
-      <img src="Imagenes/servicio6.jpeg" alt="Servicio 6">
-      <div class="card-content">
-        <br>
-        <p> <a href="#" style="text-decoration:none; color: black;"><h4>Asesoría Legal</h4></a></p>
-      </div>
-      <br>
-    </div>
+    <br>
   </div>
+  <div class="card" onclick="openModal('Abogado Penalista', 'Proporcionamos defensa legal en casos penales, tanto en delitos menores como graves, incluyendo asistencia en juicios, donde te representamos y defendemos tus derechos; recursos de apelación, gestionando la revisión de sentencias desfavorables; defensa en procedimientos policiales. los valores fluctúan entre $200.000 y $500.000-')">
+    <img src="{% static 'Imagenes/servicio3.jpeg' %}" alt="Servicio 3">
+    <div class="card-content">
+      <br>
+      <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Penalista</h4></a></p>
+    </div>
+    <br>
+  </div>
+  <div class="card" onclick="openModal('Abogado Civil', 'Nos dedicamos a la especialización en litigios civiles, abarcando una amplia gama de asuntos legales. Esto incluye, pero no se limita a, disputas de propiedad, donde ayudamos a resolver conflictos relacionados con la posesión, uso, y transferencia de bienes inmuebles. Además, manejamos litigios relacionados con contratos. los valores fluctúan entre $900.000 y $1.000.000-')">
+    <img src="{% static 'Imagenes/servicio4.jpeg' %}" alt="Servicio 4">
+    <div class="card-content">
+      <br>
+      <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Civil</h4></a></p>
+    </div>
+    <br>
+  </div>
+  <div class="card" onclick="openModal('Abogado Inmobiliario', 'Ofrecemos asesoramiento legal en casos de abandono inmobiliario, asistiendo a propietarios en la resolución de situaciones donde inquilinos u ocupantes ilegales han dejado la propiedad. Nuestro servicio incluye la recuperación de la posesión, la gestión de rentas impagadas y la reparación de daños, garantizando una solución rápida y efectiva. los valores fluctúan entre $500.000 y $600.000-')">
+    <img src="{% static 'Imagenes/servicio5.jpeg' %}"alt="Servicio 5">
+    <div class="card-content">
+      <br>
+      <p> <a href="#" style="text-decoration:none; color: black;"><h4>Abogado Inmobiliario</h4></a></p>
+    </div>
+    <br>
+  </div>
+  <div class="card" onclick="openModal('Asesoría Legal','Además de las áreas específicas mencionadas, proporcionamos asesoramiento legal general en una variedad de otros asuntos legales. Nos adaptamos a las necesidades individuales de nuestros clientes, ofreciendo soluciones personalizadas y apoyo en cualquier cuestión legal que puedan enfrentar. los valores fluctúan entre $200.000 y $400.000-')">
+    <img src="{% static 'Imagenes/servicio6.jpeg' %}" alt="Servicio 6">
+    <div class="card-content">
+      <br>
+      <p> <a href="#" style="text-decoration:none; color: black;"><h4>Asesoría Legal</h4></a></p>
+    </div>
+    <br>
+  </div>
+</div>
 
   <!-- Modal -->
   <div id="modal" class="modal">
@@ -182,97 +146,104 @@
   <br>
 
   <script>
-  // Función para abrir la modal con el texto correspondiente
-  function openModal(service, info) {
-    var modal = document.getElementById("modal");
-    var modalText = document.getElementById("modal-text");
-    modal.style.display = "block";
-    modalText.innerHTML = "<h2>" + service + "</h2><p>" + info + "</p>";
-  }
-
-
-  // Función para cerrar la modal
-  function closeModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "none";
-  }
-
-  // Función para cerrar la modal al hacer clic fuera de ella
-  window.onclick = function(event) {
-    var modal = document.getElementById("modal");
-    if (event.target == modal) {
+    // Función para abrir la modal con el texto correspondiente
+    function openModal(service, info) {
+      var modal = document.getElementById("modal");
+      var modalText = document.getElementById("modal-text");
+      modal.style.display = "block";
+      modalText.innerHTML = "<h2>" + service + "</h2><p>" + info + "</p>";
+    }
+  
+  
+    // Función para cerrar la modal
+    function closeModal() {
+      var modal = document.getElementById("modal");
       modal.style.display = "none";
     }
-  }
-  </script>
+  
+    // Función para cerrar la modal al hacer clic fuera de ella
+    window.onclick = function(event) {
+      var modal = document.getElementById("modal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
 
 
-  <!-- BURBUJAS REFERENCIAS -->
-  <h1 style="text-align: center;">Nuestros Clientes</h1>  
-  <div class="container">
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario1.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>María Contreras</h4>
-          <p>Madre soltera en un complicado caso de divorcio, busca custodia de sus hijos y necesita un abogado compasivo y decidido.</p>
-      </div>
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario2.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>Juan Rodríguez</h4>
-          <p>Empresario con un conflicto de propiedad que necesita proteger sus derechos de propiedad y busca un abogado efectivo.</p>
-      </div>
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario3.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>Laura Pérez</h4>
-          <p>Profesional de la salud enfrentando una demanda laboral injusta, busca defensa legal y compensación justa por daños.</p>
-      </div>
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario4.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>Roberto Gómez</h4>
-          <p>Arrendatario desalojado injustamente, necesita representación legal para recuperar su hogar de manera rápida.</p>
-      </div>
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario5.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>Ana aMartínez</h4>
-          <p>Empresaria con demanda por incumplimiento de contrato, busca asesoramiento legal para defender su empresa y evitar repercusiones financieras.</p>
-      </div>
-      <div class="card">
-          <div class="bubble-container">
-              <div class="profile-picture">
-                  <img src="Imagenes/usuario6.png" alt="Imagen de perfil">
-              </div>
-          </div>
-          <h4>Carlos Soto</h4>
-          <p>Conductor multado injustamente por infracción de tráfico, necesita asistencia legal para impugnar la multa y proteger su licencia de conducir.</p>
-      </div>
-      <!-- Pie de página -->
-    <footer style="text-align: center; background-color: #273b7c; color: white; padding: 20px;">
-      <p>&copy; 2024 Lex Abogados - Todos los derechos reservados</p>
-    </footer>
-  </div>
+   <!-- BURBUJAS REFERENCIAS -->
+   <h1 style="text-align: center;">Nuestros Clientes</h1>  
+   <div class="container">
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario1.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>María Contreras</h4>
+           <p>Como madre soltera en medio de un complicado caso de divorcio, buscaba un abogado que no solo fuera competente, sino también compasivo y decidido. Desde el primer día, me sentí comprendida y apoyada.</p>
+       </div>
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario2.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>Juan Rodríguez</h4>
+           <p>Como empresario enfrentando un conflicto de propiedad, necesitaba proteger mis derechos de manera efectiva. Desde el principio, mi abogado fue claro y decidido, brindándome una orientación experta y estrategias sólidas para enfrentar el conflicto.</p>
+       </div>
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario3.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>Laura Pérez</h4>
+           <p>Como profesional de la salud enfrentando una demanda laboral injusta, necesitaba una defensa legal sólida y una compensación justa por los daños sufridos. Mi abogado demostró ser extremadamente competente y comprometido.</p>
+       </div>
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario4.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>Roberto Gómez</h4>
+           <p>Como arrendatario desalojado injustamente, necesitaba una representación legal rápida y efectiva para recuperar mi hogar. Mi abogado actuó con rapidez y determinación, proporcionándome orientación experta y estrategias eficaces.</p>
+       </div>
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario5.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>Ana Martínez</h4>
+           <p>Como empresaria enfrentando una demanda por incumplimiento de contrato, necesitaba asesoramiento legal urgente para proteger mi empresa y evitar posibles repercusiones financieras. Mi abogado demostró ser muy competente y comprometido.</p>
+       </div>
+       <div class="card">
+           <div class="bubble-container">
+               <div class="profile-picture">
+                   <img src="{% static 'imagenes/usuario6.png' %}" alt="Imagen de perfil">
+               </div>
+           </div>
+           <h4>Carlos Soto</h4>
+           <p>Como conductor multado injustamente por una infracción de tráfico, necesitaba asistencia legal urgente para impugnar la multa y proteger mi licencia. Mi abogado actuó con rapidez y proporcionándome asesoramiento experto y estrategias efectivas.</p>
+       </div>
+   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Pie de página -->
+<footer style="text-align: center; background-color: #273b7c; color: white; padding: 20px;">
+  <p>&copy; 2024 Lex Abogados - Todos los derechos reservados</p>
+</footer>
 
 
 
-  <script src='{%static "js/Modal.js"%}'></script>
+  <script src="{% static 'js/Modal2.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

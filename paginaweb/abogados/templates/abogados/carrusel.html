@@ -1,0 +1,88 @@
+{% load static %}
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="6000">
+            <img src="{% static 'Imagenes/abogados1.jpg' %}" class="d-block w-100" alt="Descripción de la imagen">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Nuestro equipo de abogados laborales está dedicado a garantizar que tus derechos en el trabajo sean respetados.</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="8000">
+            <img src="{% static 'Imagenes/abogados2.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Nuestros abogados de hogar están comprometidos con la protección de tus intereses y la resolución de cualquier problema legal que puedas enfrentar</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="6000">
+            <img src="{% static 'Imagenes/abogados3.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Nuestros abogados familiares están dedicados a ayudarte a resolver conflictos familiares de manera justa y equitativa.</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="7000">
+            <img src="{% static 'Imagenes/abogados4.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Enfrentar cargos penales puede ser aterrador. Nuestros abogados penalistas están aquí para proteger tus derechos y asegurar un juicio justo.</h5>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<style>
+    #carouselExampleDark {
+  max-width: 800px; /* Ancho máximo del carrusel */
+  margin: 20px auto; /* Centra el carrusel horizontalmente y añade margen superior */
+  padding-top: 2px; /* Añade un padding superior para bajar el carrusel */
+}
+
+.carousel-item img {
+  height: 430px; /* Altura deseada para las imágenes */
+  object-fit: cover; /* Ajusta las imágenes para que cubran el contenedor */
+}
+
+.carousel-caption h5,
+.carousel-caption h6 {
+  color: white;
+  padding: 1px; /* Espaciado interno de la leyenda */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente detrás del texto */
+  border-radius: 5px; /* Redondear bordes del fondo */
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(58, 52, 52, 0.658); /* Color de fondo de los controles de navegación */
+  border-radius: 50%; /* Redondea los bordes de los íconos de navegación */
+  padding: 10px; /* Añade un poco de espacio alrededor de los íconos */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Ancho de los controles de navegación */
+}
+
+.carousel-indicators button {
+  background-color: rgba(193, 43, 43, 0.5); /* Color de fondo de los indicadores */
+  border: none; /* Elimina el borde de los indicadores */
+}
+
+.carousel-indicators .active {
+  background-color: white; /* Color de fondo del indicador activo */
+}
+</style>

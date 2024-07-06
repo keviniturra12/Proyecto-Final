@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="topnav"> 
+        <li><a href="{% url 'Inicio' %}"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li><a href="{% url 'Sobre_nosotros' %}"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
+        
+        {% if user.is_authenticated %}
+            <li class="right"><a href="{% url 'logout' %}"><i class="fas fa-sign-out me-1"></i>Cerrar Sesión</a></li>
+            <li class="right">
+                <a href="{% if grupo_cliente %}{% url 'VistaCliente' %}
+                         {% elif grupo_tecnico %}{% url 'TecnicoJuridico' %}
+                         {% elif grupo_abogado_causas %}{% url 'VistaAbogadoConsultor' %}
+                         {% elif grupo_abogado_admin %}{% url 'VistaAbogadoAdministrador' %}
+                         {% else %}{% url 'Inicio' %}{% endif %}">
+                         <i class="fas fa-user me-1"></i>{{ user.first_name }} {{ user.last_name }}
+                </a>
+            </li>
+        {% else %}
+            <li class="right"><a href="#about" id="consultarClima"><i class="fas fa-sign-in-alt me-1"></i>Inicio Sesión</a></li>
+        {% endif %}
+    </ul>
+</ul>
+
+</body>
+</html>

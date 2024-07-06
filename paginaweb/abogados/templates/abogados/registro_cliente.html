@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Cliente</title>
+    <link type="text/css" href='{% static "css/Style.css" %}' rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <ul class="topnav"> 
+        <li><a href="{% url 'Inicio' %}"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li><a href="{% url 'Sobre_nosotros' %}"><i class="fas fa-gavel me-1"></i> Nosotros</a></li>
+        <li><a class="active" href="{% url 'VistaCliente' %}"><i class="fas fa-user me-1"></i> Cliente</a></li>
+    </ul>
+
+    <ul class="topnav1 nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link active" href="#" data-section="perfil">Perfil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="solicitud">Solicitud de Servicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="estado">Estado de la Causa</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="contratos">Contratos y Documentos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
+    </ul>
+
+    <div class="content-container">
+        <div id="perfil" class="content-section active">
+            <h2>Perfil</h2>
+            <form method="post" action="{% url 'update_profile' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="rut" class="form-label">RUT</label>
+                    <input type="text" id="rut" class="form-control" value="{{ user.cliente.rut_cliente }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">Nombre</label>
+                    <input type="text" id="first_name" name="nombre" class="form-control" value="{{ user.cliente.nombre }}">
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Apellido</label>
+                    <input type="text" id="last_name" name="apellido" class="form-control" value="{{ user.cliente.apellido }}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" id="email" name="correo_electronico" class="form-control" value="{{ user.email }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Número de Teléfono</label>
+                    <input type="text" id="phone" name="telefono" class="form-control" value="{{ user.cliente.telefono }}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" id="address" name="direccion" class="form-control" value="{{ user.cliente.direccion }}">
+                </div>
+                <div class="mb-3">
+                    <label for="date_of_birth" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" id="date_of_birth" name="fecha_nacimiento" class="form-control" value="{{ user.cliente.fecha_nacimiento }}" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- Solicitud de Servicio -->
+        <div id="solicitud" class="content-section">
+            <h2>Solicitud de Servicio</h2>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="tipoServicio" class="form-label">Tipo de Servicio</label>
+                    <select id="tipoServicio" name="tipo_causa" class="form-select">
+                        <option selected>Seleccione un tipo de servicio</option>
+                        <option value="consulta">Consulta Jurídica</option>
+                        <option value="representacion">Representación Legal</option>
+                        <option value="documentacion">Preparación de Documentación</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título del Servicio</label>
+                    <input type="text" id="titulo" name="titulo" class="form-control" maxlength="100">
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción del Servicio</label>
+                    <textarea id="descripcion" name="descripcion" class="form-control" rows="4" placeholder="Describa brevemente su solicitud" maxlength="100"></textarea>
+                    <small id="descripcionHelp" class="form-text text-muted">Máximo 100 caracteres.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="archivoAdjunto" class="form-label">Adjuntar Documentos</label>
+                    <input type="file" id="archivoAdjunto" name="archivo_adjunto" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            </form>
+        </div>
+
+        <!-- Estado de la Causa -->
+        <div id="estado" class="content-section">
+            <h2>Estado de la Causa</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Causa #</h5>
+                    <p class="card-text">Estado:</p>
+                    <p class="card-text">Fecha de Inicio:</p>
+                    <p class="card-text">Fecha de Término:</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contratos y Documentos -->
+        <div id="contratos" class="content-section">
+            <h2>Contratos y Documentos</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action" download>
+                    Contrato: 
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" download>
+                    Documento:  (Tipo)
+                </a>
+            </div>
+        </div>
+
+        <!-- Notificaciones y Comunicación -->
+        <div id="notificaciones" class="content-section">
+            <h2>Notificaciones y Comunicación</h2>
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h5 class="mb-1">Título de la Notificación</h5>
+                    <p class="mb-1">Mensaje de la Notificación</p>
+                    <small>Fecha</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='{% static "js/Vistas.js" %}'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
