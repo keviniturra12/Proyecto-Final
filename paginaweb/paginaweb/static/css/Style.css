@@ -497,4 +497,61 @@ h1 {
     display: none;
 }
 
+.card-custom {
+  background-color: #f8f9fa; /* Fondo claro para contraste */
+  border: 1px solid #dee2e6; /* Borde sutil */
+  padding: 20px; /* Espaciado interno */
+  margin: 20px auto; /* Espaciado externo y centrado */
+  width: 90%; /* Ancho ajustable */
+  max-width: 1200px; /* Ancho máximo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+.card-title {
+  margin-bottom: 20px; /* Espaciado debajo del título */
+}
+.card-text {
+  text-align: justify; /* Justificar el texto */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
+#carouselExampleDark {
+  max-width: 800px; /* Ancho máximo del carrusel */
+  margin: 20px auto; /* Centra el carrusel horizontalmente y añade margen superior */
+  padding-top: 2px; /* Añade un padding superior para bajar el carrusel */
+}
 
+.carousel-item img {
+  height: 430px; /* Altura deseada para las imágenes */
+  object-fit: cover; /* Ajusta las imágenes para que cubran el contenedor */
+}
+
+.carousel-caption h5,
+.carousel-caption h6 {
+  color: white;
+  padding: 1px; /* Espaciado interno de la leyenda */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente detrás del texto */
+  border-radius: 5px; /* Redondear bordes del fondo */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(58, 52, 52, 0.658); /* Color de fondo de los controles de navegación */
+  border-radius: 50%; /* Redondea los bordes de los íconos de navegación */
+  padding: 10px; /* Añade un poco de espacio alrededor de los íconos */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Ancho de los controles de navegación */
+}
+
+.carousel-indicators button {
+  background-color: rgba(193, 43, 43, 0.5); /* Color de fondo de los indicadores */
+  border: none; /* Elimina el borde de los indicadores */
+}
+
+.carousel-indicators .active {
+  background-color: white; /* Color de fondo del indicador activo */
+}
+
+
+  

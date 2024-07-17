@@ -116,56 +116,56 @@
         <div id="registro" class="content-section">
             <h2>Registrar Abogado</h2>
             <div class="list-group">
-                <form id="formularioRegistro" method="post" action="{% url 'register_abogado' %}" class="mx-auto" style="max-width: 600px;">
+                <form id="formularioRegistro" method="post" action="{% url 'register_cliente' %}" class="mx-auto" style="max-width: 600px;">
                     {% csrf_token %}
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="rut" class="form-label">RUT</label>
                         <input type="text" id="rut" name="rut" class="form-control" required>
-                        <div id="errorRut" class="error-message">Error en RUT</div>
+                        <div id="errorRut" class="error-message" style="display:none;">Error en RUT</div>
                     </div>
-                    <div class="mb-4">
-                        <label for="first_name" class="form-label">Nombre Abogado</label>
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Nombre</label>
                         <input type="text" id="first_name" name="first_name" class="form-control" required>
-                        <div id="errorFirstName" class="error-message">Error en Nombre</div>
+                        <div id="errorFirstName" class="error-message" style="display:none;">Error en Nombre</div>
                     </div>
-                    <div class="mb-4">
-                        <label for="last_name" class="form-label">Apellido Abogado</label>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Apellido</label>
                         <input type="text" id="last_name" name="last_name" class="form-control" required>
-                        <div id="errorLastName" class="error-message">Error en Apellido</div>
+                        <div id="errorLastName" class="error-message" style="display:none;">Error en Apellido</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
                         <input type="email" id="email" name="email" class="form-control" required>
-                        <div id="errorEmail" class="error-message">Error en Correo Electrónico</div>
+                        <div id="errorEmail" class="error-message" style="display:none;">Error en Correo Electrónico</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="phone" class="form-label">Número de Teléfono</label>
                         <input type="text" id="phone" name="phone" class="form-control" required>
-                        <div id="errorPhone" class="error-message">Error en Número de Teléfono</div>
+                        <div id="errorPhone" class="error-message" style="display:none;">Error en Número de Teléfono</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="address" class="form-label">Dirección</label>
                         <input type="text" id="address" name="address" class="form-control" required>
-                        <div id="errorAddress" class="error-message">Error en Dirección</div>
+                        <div id="errorAddress" class="error-message" style="display:none;">Error en Dirección</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="date_of_birth" class="form-label">Fecha de Nacimiento</label>
                         <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
-                        <div id="errorDateOfBirth" class="error-message">Error en Fecha de Nacimiento</div>
+                        <div id="errorDateOfBirth" class="error-message" style="display:none;">Error en Fecha de Nacimiento</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="password" class="form-label">Clave</label>
                         <input type="password" id="password" name="password" class="form-control" required>
-                        <div id="errorPassword" class="error-message">Error en Clave</div>
+                        <div id="errorPassword" class="error-message" style="display:none;">Error en Clave</div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="confirm_password" class="form-label">Confirmar Clave</label>
                         <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
-                        <div id="errorConfirmPassword" class="error-message">Error en Confirmar Clave</div>
+                        <div id="errorConfirmPassword" class="error-message" style="display:none;">Error en Confirmar Clave</div>
                     </div>
-                    <div id="mensajeError" class="error-message">Por favor, corrija los errores antes de continuar.</div>
-                    <div id="mensajeExito" class="success-message">Formulario enviado con éxito.</div>
-                    <button type="submit" class="btn btn-primary w-100">Registrar Abogado</button>
+                    <div id="mensajeError" class="error-message" style="display:none;">Por favor, corrija los errores antes de continuar.</div>
+                    <div id="mensajeExito" class="success-message" style="display:none;">Formulario enviado con éxito.</div>
+                    <button type="submit" class="btn btn-primary w-100">Registrarse</button>
                 </form>
             </div>
         </div>
@@ -187,6 +187,7 @@
     </div>
 
     <script src='{% static "js/Vistas.js" %}'></script>
+    <script src='{% static "js/Validacion.js" %}'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

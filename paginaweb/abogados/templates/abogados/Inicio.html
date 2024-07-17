@@ -34,10 +34,6 @@
         </div>
     </div>
 </div>
-</div>
-  
-  
-  
 
 <div id="climaModal" class="modal" tabindex="-1">
   <div class="modal-dialog">
@@ -143,35 +139,8 @@
     </div>
   </div>
 
-  <br>
-
-  <script>
-    // Función para abrir la modal con el texto correspondiente
-    function openModal(service, info) {
-      var modal = document.getElementById("modal");
-      var modalText = document.getElementById("modal-text");
-      modal.style.display = "block";
-      modalText.innerHTML = "<h2>" + service + "</h2><p>" + info + "</p>";
-    }
-  
-  
-    // Función para cerrar la modal
-    function closeModal() {
-      var modal = document.getElementById("modal");
-      modal.style.display = "none";
-    }
-  
-    // Función para cerrar la modal al hacer clic fuera de ella
-    window.onclick = function(event) {
-      var modal = document.getElementById("modal");
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-    </script>
-
-
-   <!-- BURBUJAS REFERENCIAS -->
+  <br> 
+  <!-- BURBUJAS REFERENCIAS -->
    <h1 style="text-align: center;">Nuestros Clientes</h1>  
    <div class="container">
        <div class="card">
@@ -242,11 +211,11 @@
 </footer>
 
 
-
   <script src="{% static 'js/Modal2.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/ModalCardInicio.js' %}"></script>
 </body>
 </html>
 
